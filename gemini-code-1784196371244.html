@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Oxy - Asisten Kecerdasan Buatan Masa Depan</title>
+    
+    <!-- Mengganti Emoji dengan Font Awesome Icons (Resmi & Profesional) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts untuk Tipografi Premium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Reset & Base Styles (Sangat Rapi) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif; /* Font modern & clean */
+        }
+
+        :root {
+            --bg-color: #05070a; /* Hitam lebih pekat (premium) */
+            --bg-accent: #0e121a; /* Warna card */
+            --text-primary: #ffffff;
+            --text-secondary: #a0aec0;
+            
+            /* Gradasi Warna Oxy (Biru ke Ungu Digital) */
+            --grad-start: #00f2fe;
+            --grad-end: #4facfe;
+            --grad-premium: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #7000ff 100%);
+            
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Header / Navbar (Minimalis) --- */
+        header {
+            padding: 25px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(5, 7, 10, 0.8);
+            backdrop-filter: blur(15px); /* Efek kaca buram modern */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            background: var(--grad-premium);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- Hero Section (Tampilan Mewah) --- */
+        .hero {
+            padding: 180px 0 100px 0; /* Padding atas besar karena navbar fixed */
+            text-align: center;
+            position: relative;
+        }
+
+        /* Efek Cahaya Latar (Glow Effect) */
+        .hero-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background: var(--grad-start);
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 242, 254, 0.1);
+            color: var(--grad-start);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+        }
+
+        .hero h1 span {
+            background: var(--grad-premium);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin: 0 auto 50px auto;
+            font-weight: 400;
+        }
+
+        /* --- Tombol Download Premium --- */
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--grad-premium);
+            color: #000; /* Teks gelap di atas tombol terang */
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 12px; /* Kotak sedikit membulat (modern) */
+            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.2);
+            transition: var(--transition);
+        }
+
+        .btn-download:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 242, 254, 0.4);
+        }
+
+        .btn-download i {
+            font-size: 1.3rem;
+        }
+
+        /* --- Features Section (Grid Rapi) --- */
+        .features {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--bg-accent);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 40px;
+            border-radius: 20px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: rgba(0, 242, 254, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Icon Wrapper (Mengganti Emoji) */
+        .card-icon-wrapper {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+        
+        .card:hover .card-icon-wrapper {
+            background: rgba(0, 242, 254, 0.05);
+            border-color: rgba(0, 242, 254, 0.2);
+        }
+
+        .card-icon-wrapper i {
+            font-size: 1.5rem;
+            background: var(--grad-premium);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 400;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 50px 0;
+            margin-top: 80px;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            color: #5d6778;
+            font-size: 0.9rem;
+        }
+
+        /* --- Responsive (Adaptasi Layar HP) --- */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 140px 0 80px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn-download {
+                padding: 16px 30px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar (Minimalis) -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fa-solid fa-atom"></i> <!-- Ikon Logo Grafis -->
+                AI OXY
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-glow"></div>
+        <div class="container">
+            <!-- Badge Profesional -->
+            <div class="badge">
+                <i class="fa-solid fa-sparkles"></i>
+                Kecerdasan Buatan Generasi Terbaru
+            </div>
+            
+            <h1>Satu Aplikasi. <br>Segudang <span>Kepintaran.</span></h1>
+            <p>AI Oxy hadir sebagai asisten personal berbasis AI paling canggih, dirancang untuk meningkatkan produktivitas, kreativitas, dan efisiensi Anda hanya dalam satu ketukan.</p>
+            
+            <!-- Tombol Instal APK dengan Ikon Profesional -->
+            <a href="https://files.catbox.moe/nr0q6w.apk" class="btn-download" download>
+                <i class="fa-solid fa-download"></i> <!-- Ikon Download -->
+                Instal AI Oxy (APK)
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Mengapa Memilih AI Oxy?</h2>
+            <div class="grid">
+                
+                <!-- Fitur 1 (Ikon: Kilat) -->
+                <div class="card">
+                    <div class="card-icon-wrapper">
+                        <i class="fa-solid fa-bolt-lightning"></i>
+                    </div>
+                    <h3>Performa Instan</h3>
+                    <p>Teknologi inti kami memastikan respons yang sangat cepat dan akurat, membantu Anda menyelesaikan tugas tanpa menunggu lama.</p>
+                </div>
+                
+                <!-- Fitur 2 (Ikon: Otak Digital) -->
+                <div class="card">
+                    <div class="card-icon-wrapper">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <h3>Pemahaman Konteks</h3>
+                    <p>AI Oxy tidak hanya menjawab, tapi memahami konteks percakapan Anda untuk memberikan solusi yang relevan.</p>
+                </div>
+                
+                <!-- Fitur 3 (Ikon: Desain/Tampilan) -->
+                <div class="card">
+                    <div class="card-icon-wrapper">
+                        <i class="fa-solid fa-clapperboard"></i>
+                    </div>
+                    <h3>Antarmuka Modern</h3>
+                    <p>Didesain dengan pendekatan minimalis, bersih, dan intuitif, memberikan pengalaman pengguna yang sangat premium.</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AI Oxy Inc. Seluruh hak cipta dilindungi.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
